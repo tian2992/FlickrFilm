@@ -1,3 +1,4 @@
 Flask==0.8
 flickrapi > 1.4
+gunicorn==0.13.4
 
