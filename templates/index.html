@@ -3,13 +3,27 @@
 <head>
     <title>Film</title>
     <style>
-        body { line-height: 1.5; background: #fff; margin: 2em auto; width: 616px; }
+        @import url(http://fonts.googleapis.com/css?family=Amethysta|Alegreya:700);
+        body {
+            line-height: 1.5;
+            margin: 2em auto;
+            width: 616px;
+            color: #333;
+        }
         a { color: #009; text-decoration: none; }
         a:hover { text-decoration: underline; }
         a img { border: none; }
         a { outline: none; }
-        ul {
-            margin-bottom: 14px;
+        h1 {
+            font-family: 'Alegreya', serif;
+            font-weight: 700;
+        }
+        h2 {
+            font-family: 'Amethysta', serif;
+        }
+        div {
+            padding: 0 14px;
+            margin: 14px;
         }
         li {
             display: inline;
@@ -22,7 +36,7 @@
 <h1>Sebastian Oliva's Film Photography</h1>
 <p></p>
 {% for roll in film.values() %}
-<div class="roll"> <!-- roll -->
+<div class="roll">
     <h2>Roll {{ loop.index }}</h2>
     <ul>
         {% for photo in roll %}
@@ -30,11 +44,15 @@
             <a href="http://www.flickr.com/photos/{{user}}/{{photo.get('id')}}">
                 <img title="{{photo.get('title')}}" src="{{ url_builder(photo,'s') }}" />
             </a>
-        </li> <!-- photo -->
+        </li>
         {% endfor %}
     </ul>
 </div>
 {% endfor %}
+
+<footer>
+    <p>Unless otherwise noted, this <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://sebastianoliva.com" property="cc:attributionName" rel="cc:attributionURL">Sebastian Oliva</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/gt/">Creative Commons Attribution-Share Alike 3.0 Guatemala License</a>.<br />Based on a work at <a xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://sebastianoliva.com" rel="dc:source">sebastianoliva.com</a>.<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/gt/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/gt/80x15.png" /></a></p>
+</footer>
 
 </body>
 </html>
