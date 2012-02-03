@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Film</title>
+    <style>
+        body { line-height: 1.5; background: #fff; margin: 2em auto; width: 616px; }
+        a { color: #009; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        a img { border: none; }
+        a { outline: none; }
+        ul {
+            margin-bottom: 14px;
+        }
+        li {
+            display: inline;
+            list-style: none;
+            margin-right: 7px;
+        }
+    </style>
+</head>
+<body>
+<h1>Sebastian Oliva's Film Photography</h1>
+<p></p>
+{% for roll in film.values() %}
+<div class="roll"> <!-- roll -->
+    <h2>Roll {{ loop.index }}</h2>
+    <ul>
+        {% for photo in roll %}
+        <li>
+            <a href="http://www.flickr.com/photos/{{user}}/{{photo.get('id')}}">
+                <img title="{{photo.get('title')}}" src="{{ url_builder(photo,'s') }}" />
+            </a>
+        </li> <!-- photo -->
+        {% endfor %}
+    </ul>
+</div>
+{% endfor %}
+
+</body>
+</html>
