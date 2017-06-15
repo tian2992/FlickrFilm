@@ -7,7 +7,7 @@
         body {
             line-height: 1.5;
             margin: 2em auto;
-            width: 616px;
+            width: 80%;
             color: #333;
         }
         a { color: #009; text-decoration: none; }
@@ -35,14 +35,16 @@
 <body>
 <h1>Sebastian Oliva's Film Photography</h1>
 <p></p>
-{% for roll in film.values() %}
+{% for roll in film %}
 <div class="roll">
-    <h2>Roll {{ loop.index }}</h2>
+    <!-- <h2>Roll {# loop.index #}</h2> -->
+    <hr />
     <ul>
         {% for photo in roll %}
         <li>
             <a href="http://www.flickr.com/photos/{{user}}/{{photo.get('id')}}">
-                <img title="{{photo.get('title')}}" src="{{ url_builder(photo,'s') }}" />
+                <img title="{{photo.get('title')}}" src="{{ url_builder(photo,'q') }}" />
+                
             </a>
         </li>
         {% endfor %}
