@@ -3,8 +3,9 @@
 <head>
     <title>Film</title>
     <style>
-        @import url(http://fonts.googleapis.com/css?family=Amethysta|Alegreya:700);
+        @import url(http://fonts.googleapis.com/css?family=Amethysta|Alegreya);
         body {
+            font-family: 'Alegreya', serif;
             line-height: 1.5;
             margin: 2em auto;
             width: 80%;
@@ -37,10 +38,11 @@
 <p></p>
 {% for roll in film %}
 <div class="roll">
-    <!-- <h2>Roll {# loop.index #}</h2> -->
+    <h2>Roll </h2>
     <hr />
     <ul>
-        {% for photo in roll %}
+        {% for photo, tags in roll %}
+        <p>{{ tags }}<p>
         <li>
             <a href="http://www.flickr.com/photos/{{user}}/{{photo.get('id')}}">
                 <img title="{{photo.get('title')}}" src="{{ url_builder(photo,'q') }}" />
