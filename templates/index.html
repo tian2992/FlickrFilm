@@ -7,8 +7,7 @@
         body {
             font-family: 'Alegreya', serif;
             line-height: 1.5;
-            margin: 2em auto;
-            width: 80%;
+            margin: 2em 2em;
             color: #333;
         }
         a { color: #009; text-decoration: none; }
@@ -22,34 +21,46 @@
         h2 {
             font-family: 'Amethysta', serif;
         }
-        div {
-            padding: 0 14px;
-            margin: 14px;
+        .roll {
+          display: flex;
+          flex-wrap: wrap;
+          width: 80%;
         }
-        li {
-            display: inline;
-            list-style: none;
-            margin-right: 7px;
+        figure{
+          margin: 7px;
+          width: 320px;
+        }
+        figcaption {
+          /*display: none;*/
         }
     </style>
 </head>
 <body>
-<h1>Sebastian Oliva's Film Photography</h1>
+<h1>tian's Film Photography</h1>
 <p></p>
 {% for roll in film %}
-<div class="roll">
-    <h2>Roll </h2>
+<div>
+    <!-- <h2>Roll</h2> -->
     <hr />
-    <ul>
+    <div class="roll">
         {% for photo, tags in roll %}
-        <p>{{ tags }}<p>
-        <li>
-            <a href="http://www.flickr.com/photos/{{user}}/{{photo.get('id')}}">
-                <img title="{{photo.get('title')}}" src="{{ url_builder(photo,'q') }}" />
-            </a>
-        </li>
+        <div class="pic">
+              <figure>
+                <a href="http://www.flickr.com/photos/{{user}}/{{photo.get('id')}}">
+                <img title="{{photo.get('title')}}" src="{{ url_builder(photo,'n') }}" />
+                </a>
+                <figcaption>
+                  <em>{{photo.get('title')}}</em> - {{photo.get('description') or ''}} <!-- {{photo.get('geo')}} -->
+                  <br />
+                  <small>
+                {% for tag in tags %}
+                    #{{ tag }}
+                   {% endfor %} </small>
+                </figcaption>
+              </figure>
+            <!-- </a> -->
+        </div>
         {% endfor %}
-    </ul>
 </div>
 {% endfor %}
 
